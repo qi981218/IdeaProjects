@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>{{name}}</div>
+    <div>{{list[0]}}</div>
+    <div>{{stu.name}}</div>
+    <input name="username" :model="">
+    <button @click="send()">点我发送异步请求</button>
+</div>
+
+
+<script src="js/vue.js"></script>
+<script>
+    //创建Vue对象管理指定区域
+    new Vue({
+        el: "#app",
+        //准备数据
+        data: {
+            name: "陈亚琪",
+            list: ["123", 19],
+            stu: {name: "lisi", age: 18}
+        },
+        methods:{
+            send(){
+                alert("你好");
+            }
+        }
+
+        // data() {
+        //     return {
+        //
+        //     }
+        // }
+
+    });
+
+</script>
+
+</body>
+</html>

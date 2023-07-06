@@ -1,0 +1,14 @@
+cn\itcast\config\SpringMVCConfig.class
+cn\itcast\pojo\PageBean.class
+cn\itcast\pojo\User.class
+cn\itcast\pojo\Brand.class
+cn\itcast\mapper\BrandMapper.class
+cn\itcast\service\impl\BrandServiceImpl.class
+cn\itcast\service\BrandService.class
+cn\itcast\controller\UserController.class
+cn\itcast\config\SpringConfig.class
+cn\itcast\controller\SpringMVCSupport.class
+cn\itcast\config\MyDispatherServletInit.class
+cn\itcast\config\MybatisConfig.class
+cn\itcast\controller\BrandController.class
+cn\itcast\config\JDBCConfig.class

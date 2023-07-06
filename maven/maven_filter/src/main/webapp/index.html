@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/axios-0.18.0.js"></script>
+<script>
+    //绑定事件
+
+    function ajaxstart() {
+        let username = document.getElementById("username");
+        // //创建异步请求核心对象
+        // let request = new XMLHttpRequest();
+        // //绑定请求的方法和路径
+        // request.open("get", "/demo1");
+        // //发送
+        // request.send();
+        // //响应返回的数据
+        // request.onreadystatechange = function () {
+        //     if (request.readyState == 4) {
+        //         alert(request.responseText);
+        //     }
+        // }
+
+        // axios({
+        //     method: "post",
+        //     url: "/demo1",
+        //     data: "username=" + document.querySelector("#username").value
+        // }).then(function (resp) {
+        //     alert(resp.data);
+        // })
+        axios({
+            method: "get",
+            url: "/demo1?username=" + username.value
+        }).then(function (resp) {
+            alert(resp.data);
+        })
+    }
+</script>
+<body>
+<input type="text" id="username" onblur="ajaxstart()">
+<button onclick="ajaxstart()">登录</button>
+</body>
+</html>

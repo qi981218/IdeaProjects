@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_表单验证</title>
+    <script>
+
+        function a() {
+            if (!/^\w{6,12}$/.test(username.value.trim())) {
+                usernameSpan.innerHTML = "错了";
+            } else {
+                    usernameSpan.innerHTML = "";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<form action="#" method="get">
+    账号: <input type="text" id="username" name="username" value="" onblur="a()"><span id="usernameSpan"></span><br>
+    账号: <input type="password" id="password" name="password" value="" onblur="b()"><span id="passwordSpan"></span><br>
+    账号: <input type="submit" id="submit" value="提交"></span></form>
+</body>
+</html>

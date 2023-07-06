@@ -1,0 +1,12 @@
+com\itheima\controller\TbBrandController.class
+com\itheima\entity\TbBrand.class
+com\itheima\config\MyBatisConfig.class
+com\itheima\config\MyDispatherServletInit.class
+com\itheima\config\JDBCConfig.class
+com\itheima\config\SpringMVCConfig.class
+com\itheima\controller\SpringMVCSupport.class
+com\itheima\entity\PageBean.class
+com\itheima\config\SpringConfig.class
+com\itheima\service\impl\TbBrandServiceImpl.class
+com\itheima\mapper\TbBrandMapper.class
+com\itheima\service\TbBrandService.class

@@ -1,0 +1,6 @@
+com\itheima\entity\TbBrand.class
+com\itheima\util\MybatisUtil.class
+com\itheima\entity\PageBean.class
+com\itheima\mapper\TbBrandMapper.class
+com\itheima\service\TbBrandService.class
+com\itheima\web\servlet\TbBrandServlet.class

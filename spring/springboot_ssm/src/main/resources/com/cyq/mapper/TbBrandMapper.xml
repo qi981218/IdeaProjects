@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyq.mapper.TbBrandMapper">
+    <!--修改-->
+    <update id="updateTbBrandServlet">
+        update tb_brand
+        <set>
+            <if test="brandName != null  and brandName!=''">
+                brand_name=#{brandName},
+            </if>
+
+            <if test="companyName != null  and companyName!=''">
+                company_name =#{companyName},
+            </if>
+
+            <if test="ordered!=null">
+                ordered=#{ordered},
+            </if>
+
+            <if test="description != null  and description!=''">
+                description =#{description},
+            </if>
+
+            <if test="status!=null">
+                status=#{status},
+            </if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除多条数据-->
+    <delete id="deleteByIds">
+        delete from tb_brand
+        <where>
+            <foreach collection="ids" open="id in (" close=")" separator="," item="id">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <!--动态分页加条件查询-->
+    <select id="pagingQuery" resultType="com.cyq.entity.TbBrand">
+        select * from tb_brand
+        <where>
+            <if test="tbBrand.status!=null">
+                and status=#{tbBrand.status}
+            </if>
+
+            <if test="tbBrand.brandName != null  and tbBrand.brandName!=''">
+              and  brand_name like concat('%',#{tbBrand.brandName},'%')
+            </if>
+
+            <if test="tbBrand.companyName != null  and tbBrand.companyName!=''">
+              and  company_name like concat('%',#{tbBrand.companyName},'%')
+            </if>
+        </where>
+        limit #{start},#{pageSize}
+    </select>
+
+    <!--动态查询总条数-->
+    <select id="totalAll" resultType="int">
+        select count(*) from tb_brand
+        <where>
+            <if test="status!=null">
+                and status=#{status}
+            </if>
+
+            <if test="brandName != null  and brandName!=''">
+               and brand_name like concat('%',#{brandName},'%')
+            </if>
+
+            <if test="companyName != null  and companyName!=''">
+              and  company_name like concat('%',#{companyName},'%')
+            </if>
+        </where>
+
+    </select>
+
+
+</mapper>

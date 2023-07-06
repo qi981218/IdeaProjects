@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="maven_filter" />
+        <module name="tomcat_demo1" />
+        <module name="response" />
+        <module name="mybatis-day01" />
+        <module name="spring_mvc1" />
+        <module name="maven_demo1" />
+        <module name="maven_vue" />
+        <module name="spring_mvcSsm" />
+        <module name="servlet_demo1" />
+        <module name="maven_cookie" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="maven_cookie" target="1.8" />
+      <module name="maven_demo1" target="1.8" />
+      <module name="maven_filter" target="1.8" />
+      <module name="maven_vue" target="1.8" />
+      <module name="mybatis-day01" target="1.8" />
+      <module name="response" target="1.8" />
+      <module name="servlet_demo1" target="1.8" />
+      <module name="spring_mvc1" target="1.8" />
+      <module name="spring_mvcSsm" target="1.8" />
+      <module name="tomcat_demo1" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

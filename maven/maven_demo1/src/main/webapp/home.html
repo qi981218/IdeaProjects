@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/vue.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+<body>
+<div id="app">
+    <!-- 查询-->
+    <el-form :inline="true" :model="searchForm" class="demo-form-inline" ref="aa">
+        <el-form-item label="当前状态" prop="status">
+            <el-select v-model="searchForm.status" placeholder="当前状态">
+                <el-option label="所有"></el-option>
+                <el-option label="启用" value="1"></el-option>
+                <el-option label="禁用" value="0"></el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item label="企业名称">
+            <el-input v-model="searchForm.companyName" placeholder="企业名称"></el-input>
+        </el-form-item>
+        <el-form-item label="品牌名称">
+            <el-input v-model="searchForm.brandName" placeholder="品牌名称"></el-input>
+        </el-form-item>
+
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit()">查询</el-button>
+        </el-form-item>
+    </el-form>
+
+    <!--批量删除和新增按钮-->
+    <el-row>
+        <el-button type="danger" @click="deleteByIds()">批量删除</el-button>
+        <el-button type="success" @click="dialogFormVisible = true">新增</el-button>
+    </el-row>
+    <!--添加信息-->
+    <el-dialog title="添加信息" :visible.sync="dialogFormVisible" align="center">
+        <!-- 添加表单-->
+        <el-form :model="addTbBrandFrom"
+                 :rules="rules"
+                 ref="addTbBrandFrom"
+                 class="demo-addTbBrandFrom"
+                 label-width="80px">
+
+            <el-form-item label="企业名称" prop="companyName">
+                <el-input v-model="addTbBrandFrom.companyName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="品牌名称" prop="brandName">
+                <el-input v-model="addTbBrandFrom.brandName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="排序">
+                <el-input v-model="addTbBrandFrom.ordered"></el-input>
+            </el-form-item>
+
+            <el-form-item label="描述信息">
+                <el-input type="textarea" v-model="addTbBrandFrom.description"></el-input>
+            </el-form-item>
+
+            <el-form-item label="状态">
+                <el-switch
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        :active-value=1
+                        :inactive-value=0
+                        v-model="addTbBrandFrom.status">
+                </el-switch>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="addTbBrand()">提交</el-button>
+            <el-button @click="quAddTbBrand()">取 消</el-button>
+        </div>
+    </el-dialog>
+
+
+    <!--修改表单-->
+    <el-dialog title="修改信息" :visible.sync="updateShow" align="center">
+        <!-- 修改表单-->
+        <el-form :model="updateTbBrandFrom"
+                 label-width="80px">
+
+            <el-form-item label="id" v-if="false">
+                <el-input v-model="updateTbBrandFrom.id"></el-input>
+            </el-form-item>
+
+            <el-form-item label="企业名称">
+                <el-input v-model="updateTbBrandFrom.companyName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="品牌名称">
+                <el-input v-model="updateTbBrandFrom.brandName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="排序">
+                <el-input v-model="updateTbBrandFrom.ordered"></el-input>
+            </el-form-item>
+
+            <el-form-item label="描述信息">
+                <el-input type="textarea" v-model="updateTbBrandFrom.description"></el-input>
+            </el-form-item>
+
+            <el-form-item label="状态">
+                <el-switch
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        :active-value=1
+                        :inactive-value=0
+                        v-model="updateTbBrandFrom.status">
+                </el-switch>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="updateTbBrand()">提交</el-button>
+            <el-button @click="quAddTbBrand()">取 消</el-button>
+        </div>
+    </el-dialog>
+
+
+    <!-- 创建表单-->
+    <template>
+        <el-table
+                v-loading="loading"
+                ref="filterTable"
+                :data="tableData"
+                style="width: 100%"
+                @selection-change="handleSelectionChange"
+                @filter-change="handleFilterChange">
+            <!--多选框-->
+            <el-table-column
+                    type="selection"
+                    width="55">
+            </el-table-column>
+            <!--序号   sortable:排序-->
+            <el-table-column
+                    label="序号"
+                    type="index"
+                    width="50">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="brandName"
+                    sortable
+                    label="品牌名称">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="companyName"
+                    label="企业名称">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="ordered"
+                    label="排序"
+                    sortable>
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="description"
+                    label="描述信息"
+                    :formatter="formatter">
+            </el-table-column>
+
+            <el-table-column
+                    prop="status"
+                    label="状态"
+                    column-key="status"
+                    :filters="[{ text: '所有' },{ text: '启用', value: 1 }, { text: '禁用', value: 0 }]"
+                    :filter-method="filterTag"
+                    class="el-icon-edit">
+
+                <!--颜色-->
+                <template slot-scope="scope">
+                    <el-tag
+                            :type="scope.row.status == '0' ? 'danger' : 'success'"
+                            disable-transitions>
+                        <span v-if="scope.row.status == '0'">禁用</span>
+                        <span v-if="scope.row.status == '1'">启用</span>
+                    </el-tag>
+                </template>
+            </el-table-column>
+            <!--    操作-->
+            <el-table-column label="操作" align="center">
+                <template slot-scope="scope">
+                    <el-button
+                            type="primary"
+                            size="mini"
+                            @click="handleEdit(scope.row)"
+                            icon="el-icon-edit"
+                    >编辑
+                    </el-button>
+                    <el-button
+                            icon="el-icon-delete-solid"
+                            type="danger"
+                            size="mini"
+                            @click="deleteById(scope.$index,scope.row.id)">删除
+                    </el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+    <!-- 分页-->
+    <div>
+        <el-pagination
+                align="center"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page=pageData.currentPage
+                :page-sizes="[10, 20, 30, 40]"
+                :page-size=pageData.pageSize
+                layout="total, sizes, prev, pager, next, jumper"
+                :total=pageData.total>
+        </el-pagination>
+    </div>
+</div>
+<script>
+    //创建vue对象管理并指定区域
+    new Vue({
+        el: "#app",
+        methods: {
+            //修改
+            updateTbBrand() {
+                axios({
+                    method: "post",
+                    url: "/tbBrand/updateTbBrandServlet",
+                    data: this.updateTbBrandFrom
+                }).then(resp => {
+                    this.updateShow = false;
+                    this.$message({
+                        message: '修改成功',
+                        type: 'success'
+                    });
+                    this.pagingQuery();
+                })
+            },
+
+            //表单数据的取消按钮
+            quAddTbBrand() {
+                this.dialogFormVisible = false;
+
+                this.updateShow = false;
+
+                this.addTbBrandFrom = {
+                    brandName: "",
+                    companyName: "",
+                    ordered: "",
+                    description: "",
+                    status: '0'
+                };
+
+            },
+
+
+            //添加表单数据
+            addTbBrand() {
+                axios({
+                    method: "post",
+                    url: "/tbBrand/addTbBrandServlet",
+                    data: this.addTbBrandFrom
+                }).then(resp => {
+                    if (resp.data == -2) {
+                        // 品牌名不能为空（message消息提示）
+                        this.$message({
+                            message: '品牌名不能为空',
+                            type: 'error'
+                        });
+                    } else if (resp.data == -3) {
+                        // 公司名不能为空（message消息提示）
+                        this.$message({
+                            message: '企业名称不能为空',
+                            type: 'error'
+                        });
+                    } else if (resp.data > 0) {
+                        this.addTbBrandFrom = {
+                            brandName: "",
+                            companyName: "",
+                            ordered: "",
+                            description: "",
+                            status: '0'
+                        };
+                        this.dialogFormVisible = false;
+                        // 添加成功（message消息提示）
+                        this.$message({
+                            message: '添加成功',
+                            type: 'success'
+                        });
+
+                        this.searchForm = {
+                            companyName: '',
+                            brandName: '',
+                            status: ''
+                        },
+                            this.pagingQuery();
+                    }
+
+                })
+            },
+
+            //分页查询
+            pagingQuery() {
+                //异步请求数据  pageSize:每页显示的数据条数   currentPage:当前页
+                axios({
+                    method: "post",
+                    url: "/tbBrand/pagingQuery?currentPage=" + this.pageData.currentPage + "&pageSize=" + this.pageData.pageSize,
+                    data: this.searchForm,
+                }).then(resp => {
+                    this.pageData.total = resp.data.total;
+                    this.tableData = resp.data.tbBrand;
+                })
+            },
+
+
+            // 多选框
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+            },
+
+
+            // 格式化描述信息
+            formatter(row, column) {
+                return row.description;
+            },
+
+            //筛选
+            filterTag(value, row) {
+                return row.status === value;
+            },
+
+            //筛选条件发生变化后的回调
+            handleFilterChange(value) {
+                this.pageData.currentPage = 1;
+                this.searchForm.status = parseInt(value.status);
+                this.pagingQuery();
+                this.$refs['filterTable'].clearFilter('status');
+
+            },
+
+            //点击查询按钮
+            onSubmit() {
+                // console.log(this.searchForm);
+                this.pageData.currentPage = 1;
+                this.pagingQuery();
+                this.$refs.aa.clearSelection();
+            },
+
+
+            //分页
+            handleSizeChange(val) {
+                // 每页显示的数据条数
+                this.pageData.pageSize = val;
+                this.pageData.currentPage = 1;
+                this.pagingQuery();
+            },
+            handleCurrentChange(val) {
+                //当前页码数
+                this.pageData.currentPage = val;
+                this.pagingQuery();
+            },
+
+            // 修改
+            handleEdit(row) {
+                this.updateTbBrandFrom = row;
+                this.updateShow = true;
+            },
+
+
+            // 删除单条数据
+            deleteById(index, id) {
+                //发送axios请求
+                axios({
+                    method: "get",
+                    url: "/tbBrand/deleteServlet?id=" + id,
+                }).then(resp => {
+                    this.pagingQuery();
+                })
+            },
+
+            //删除多条数据
+            deleteByIds() {
+                //声明数组保存id
+                let ids = [];
+                //遍历选中的id赋值给id[]
+                for (let i = 0; i < this.multipleSelection.length; i++) {
+                    ids[i] = this.multipleSelection[i].id;
+                }
+
+                //使用异步请求进行批量删除
+                if (ids.length > 0) {
+                    //弹出提示框
+                    this.$confirm("是否删除你所选择的这些内容", "提示", {
+                        confirmButtonText: "确定",
+                        cancelButtonText: "取消",
+                        type: 'warning'
+                    }).then(() => {
+
+                        //发送异步请求
+                        axios({
+                            method: "post",
+                            url: "/tbBrand/deleteByIds",
+                            data: ids
+                        }).then(resp => {
+                            if (resp.data > 0) {
+
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除成功!'
+                                });
+
+                                this.pagingQuery();
+                            } else {
+
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除失败!'
+                                });
+                                this.pagingQuery();
+                            }
+                        })
+                    }).catch(() => {
+
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
+
+                    });
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: '请至少选择一条数据进行删除'
+                    });
+                }
+            },
+
+
+        },
+        //初始化
+        mounted() {
+            this.pagingQuery();
+        },
+
+
+        data() {
+            return {
+                //添加表单验证
+                rules: {
+                    brandName: [
+                        {required: true, message: '请输入品牌名称', trigger: 'blur'},
+                    ],
+                    companyName: [
+                        {required: true, message: '请输入企业名称', trigger: 'blur'},
+                    ],
+
+                },
+
+                // loading加载
+                loading: false,
+
+                //添加表单
+                dialogFormVisible: false,//页面关闭
+                addTbBrandFrom: {
+                    brandName: "",
+                    companyName: "",
+                    ordered: "",
+                    description: "",
+                    status: '0'
+                },
+
+                // 修改表单
+                updateTbBrandFrom: {
+                    id: "",
+                    brandName: "",
+                    companyName: "",
+                    ordered: "",
+                    description: "",
+                    status: '0'
+                },
+                updateShow: false,//页面关闭
+
+
+                //表单数据
+                tableData: [{
+                    id: "",
+                    brandName: "",
+                    companyName: "",
+                    ordered: "",
+                    description: "",
+                    status: ''
+                }],
+
+                <!-- 查询-->
+                searchForm: {
+                    companyName: '',
+                    brandName: '',
+                    status: ''
+                },
+
+                //多选框选定
+                multipleSelection: [],
+
+                //分页数据  total:信息总条数   currentPage:当前页  pageSize:每页显示的数据条数
+                pageData: {
+                    currentPage: 1,
+                    total: 0,
+                    pageSize: 10
+                },
+
+            }
+        },
+
+    })
+
+</script>
+</body>
+</html>

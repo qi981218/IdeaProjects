@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc56a2fd-87fc-4656-87ea-6cbf6492dc71" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\repository" />
+        <option name="mavenHome" value="E:/maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="E:\maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2BudxYwHv9JYWvt9bqsuksZ2yUQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/day13/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\javaSE\day13\src" />
+      <recent name="D:\IdeaProjects\javaSE\day13\lib" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LogDemo">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="shangchuan.Client" />
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="shangchuan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LogDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="log.LogDemo" />
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="log.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="shangchuan.Server" />
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="shangchuan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SocketClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="socket.SocketClient" />
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="socket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SocketServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="socket.SocketServer" />
+      <module name="day13" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="socket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LogDemo" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.SocketClient" />
+        <item itemvalue="Application.SocketServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc56a2fd-87fc-4656-87ea-6cbf6492dc71" name="Default Changelist" comment="" />
+      <created>1657760151022</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657760151022</updated>
+      <workItem from="1657760152202" duration="18000" />
+      <workItem from="1657760175517" duration="5502000" />
+      <workItem from="1657766360698" duration="85000" />
+      <workItem from="1657766458768" duration="11000" />
+      <workItem from="1657766481602" duration="60000" />
+      <workItem from="1657766553542" duration="17000" />
+      <workItem from="1657766582221" duration="173000" />
+      <workItem from="1657766769292" duration="814000" />
+      <workItem from="1657768745164" duration="34000" />
+      <workItem from="1657769300980" duration="255000" />
+      <workItem from="1657769579479" duration="1129000" />
+      <workItem from="1657776415545" duration="29000" />
+      <workItem from="1657776461266" duration="2090000" />
+      <workItem from="1657780473179" duration="524000" />
+      <workItem from="1657784824289" duration="1545000" />
+      <workItem from="1657850896381" duration="57000" />
+      <workItem from="1657850994512" duration="3191000" />
+      <workItem from="1657862361972" duration="36000" />
+      <workItem from="1657862427679" duration="16000" />
+      <workItem from="1657862453496" duration="192000" />
+      <workItem from="1657863228198" duration="85000" />
+      <workItem from="1657865111576" duration="61000" />
+      <workItem from="1657865830575" duration="20000" />
+      <workItem from="1657865872548" duration="21000" />
+      <workItem from="1657869002957" duration="206000" />
+      <workItem from="1657869225181" duration="120000" />
+      <workItem from="1657869358249" duration="1522000" />
+      <workItem from="1657870908026" duration="200000" />
+      <workItem from="1657871118960" duration="210000" />
+      <workItem from="1657871371216" duration="1036000" />
+      <workItem from="1657873950130" duration="2830000" />
+      <workItem from="1657951027928" duration="2324000" />
+      <workItem from="1657956471860" duration="3490000" />
+      <workItem from="1657974463809" duration="294000" />
+      <workItem from="1657977118721" duration="438000" />
+      <workItem from="1658020164664" duration="121000" />
+      <workItem from="1658020303821" duration="502000" />
+      <workItem from="1658036522585" duration="95000" />
+      <workItem from="1658040487498" duration="24000" />
+      <workItem from="1658040597062" duration="33000" />
+      <workItem from="1658114273852" duration="2828000" />
+      <workItem from="1658129496369" duration="99000" />
+      <workItem from="1658129793871" duration="2668000" />
+      <workItem from="1658200290141" duration="1031000" />
+      <workItem from="1658201568391" duration="46000" />
+      <workItem from="1658201640124" duration="114000" />
+      <workItem from="1658201772823" duration="65000" />
+      <workItem from="1658201854542" duration="68000" />
+      <workItem from="1658201942333" duration="57000" />
+      <workItem from="1658202019376" duration="230000" />
+      <workItem from="1658202267772" duration="203000" />
+      <workItem from="1658202488912" duration="5848000" />
+      <workItem from="1658365346225" duration="17000" />
+      <workItem from="1658365439921" duration="3521000" />
+      <workItem from="1658392528023" duration="30000" />
+      <workItem from="1658453236075" duration="22000" />
+      <workItem from="1658453268257" duration="6000" />
+      <workItem from="1658453283617" duration="51000" />
+      <workItem from="1658453700500" duration="338000" />
+      <workItem from="1658454176865" duration="108000" />
+      <workItem from="1658454299170" duration="169000" />
+      <workItem from="1658455191594" duration="474000" />
+      <workItem from="1658455682033" duration="2458000" />
+      <workItem from="1658471519684" duration="283000" />
+      <workItem from="1658473495449" duration="290000" />
+      <workItem from="1658473803056" duration="1217000" />
+      <workItem from="1658475042709" duration="39000" />
+      <workItem from="1658475097844" duration="345000" />
+      <workItem from="1658475515078" duration="642000" />
+      <workItem from="1658486890452" duration="14000" />
+      <workItem from="1658624851517" duration="593000" />
+      <workItem from="1658632976541" duration="18000" />
+      <workItem from="1658661397708" duration="9000" />
+      <workItem from="1658717084587" duration="13915000" />
+      <workItem from="1658884528764" duration="10166000" />
+      <workItem from="1658918196710" duration="76000" />
+      <workItem from="1658918487486" duration="3000" />
+      <workItem from="1658989293420" duration="1117000" />
+      <workItem from="1659059690431" duration="3780000" />
+      <workItem from="1659665548743" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.ConnectException" package="java.net" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

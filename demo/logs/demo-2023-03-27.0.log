@@ -1,0 +1,18 @@
+2023-03-27 18:15:56.277  INFO 3996 [background-preinit] o.h.validator.internal.util.Version      21 : HV000001: Hibernate Validator 6.2.5.Final
+2023-03-27 18:15:56.282  INFO 3996 [main] com.example.demo.DemoApplication         55 : Starting DemoApplication using Java 1.8.0_331 on DESKTOP-EGEQKN1 with PID 3996 (D:\IdeaProjects\demo\demo\target\classes started by 17236 in D:\IdeaProjects\demo)
+2023-03-27 18:15:56.283  INFO 3996 [main] com.example.demo.DemoApplication         631 : No active profile set, falling back to 1 default profile: "default"
+2023-03-27 18:15:57.498  INFO 3996 [main] o.s.b.w.embedded.tomcat.TomcatWebServer  108 : Tomcat initialized with port(s): 8089 (http)
+2023-03-27 18:15:57.507  INFO 3996 [main] o.a.coyote.http11.Http11NioProtocol      173 : Initializing ProtocolHandler ["http-nio-8089"]
+2023-03-27 18:15:57.507  INFO 3996 [main] o.apache.catalina.core.StandardService   173 : Starting service [Tomcat]
+2023-03-27 18:15:57.507  INFO 3996 [main] org.apache.catalina.core.StandardEngine  173 : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-03-27 18:15:57.742  INFO 3996 [main] o.a.c.c.C.[Tomcat].[localhost].[/]       173 : Initializing Spring embedded WebApplicationContext
+2023-03-27 18:15:57.742  INFO 3996 [main] w.s.c.ServletWebServerApplicationContext 292 : Root WebApplicationContext: initialization completed in 1398 ms
+2023-03-27 18:15:57.924  INFO 3996 [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure 55 : Init DruidDataSource
+2023-03-27 18:15:59.380  INFO 3996 [main] com.alibaba.druid.pool.DruidDataSource   996 : {dataSource-1} inited
+2023-03-27 18:16:00.840  INFO 3996 [main] o.s.b.a.w.s.WelcomePageHandlerMapping    53 : Adding welcome page: class path resource [static/index.html]
+2023-03-27 18:16:01.076  INFO 3996 [main] o.a.coyote.http11.Http11NioProtocol      173 : Starting ProtocolHandler ["http-nio-8089"]
+2023-03-27 18:16:01.089  INFO 3996 [main] o.s.b.w.embedded.tomcat.TomcatWebServer  220 : Tomcat started on port(s): 8089 (http) with context path ''
+2023-03-27 18:16:01.096  INFO 3996 [main] com.example.demo.DemoApplication         61 : Started DemoApplication in 5.246 seconds (JVM running for 7.121)
+2023-03-27 18:17:10.225  INFO 3996 [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       173 : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-27 18:17:10.226  INFO 3996 [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        525 : Initializing Servlet 'dispatcherServlet'
+2023-03-27 18:17:10.227  INFO 3996 [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        547 : Completed initialization in 1 ms

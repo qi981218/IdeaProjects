@@ -1,0 +1,8 @@
+com\itheima\web\servlet\Demo2Cooki.class
+com\itheima\service\UserInfoService.class
+com\itheima\web\servlet\UserInfoServlet.class
+com\itheima\entity\UserInfo.class
+com\itheima\web\servlet\Demo1Cooki.class
+com\itheima\util\AuthCodeUtils.class
+com\itheima\util\MybatisUtil.class
+com\itheima\mapper\UserInfoMapper.class

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--ioc 让spring帮忙造对象  需要自己配置-->
+    <!--    <bean id="b" class="com.di.B"></bean>-->
+
+    <!--<bean id="a" class="com.di.A">-->
+    <!--    <property name="b" ref="b" />-->
+    <!--</bean>-->
+
+    <!--使用工厂-->
+    <bean id="a" class="com.factory.AFacorty"></bean>
+</beans>

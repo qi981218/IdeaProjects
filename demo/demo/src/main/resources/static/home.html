@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/axios-0.18.0.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+</head>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/vue.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+<body>
+<div id="app">
+    <!--修改-->
+    <el-dialog
+            title="添加信息"
+            :visible.sync="updateDialog"
+            width="30%"
+            center>
+        <el-form :model="updateFrom">
+
+            <el-form-item label="用户账号" :label-width="formLabelWidth">
+                <el-input v-model="updateFrom.username" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="密码" :label-width="formLabelWidth">
+                <el-input v-model="updateFrom.password" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="用户昵称" :label-width="formLabelWidth">
+                <el-input v-model="updateFrom.nickname" autocomplete="off"></el-input>
+            </el-form-item>
+
+
+            <el-form-item label="用户邮箱" :label-width="formLabelWidth">
+                <el-input v-model="updateFrom.email" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="手机号码" :label-width="formLabelWidth">
+                <el-input v-model="updateFrom.mobile" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="性别" :label-width="formLabelWidth">
+                <el-radio v-model="updateFrom.sex" :label="0">男</el-radio>
+                <el-radio v-model="updateFrom.sex" :label="1">女</el-radio>
+            </el-form-item>
+
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="update()">修改</el-button>
+            <el-button type="primary" @click="updateDialog = false">取消</el-button>
+        </div>
+
+
+    </el-dialog>
+
+
+
+    <!-- 添加 -->
+    <el-button type="text" @click="addDialog = true">新增</el-button>
+    <el-dialog
+            title="添加信息"
+            :visible.sync="addDialog"
+            width="30%"
+            center>
+        <el-form :model="addForm">
+
+            <el-form-item label="用户账号" :label-width="formLabelWidth">
+                <el-input v-model="addForm.username" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="密码" :label-width="formLabelWidth">
+                <el-input v-model="addForm.password" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="用户昵称" :label-width="formLabelWidth">
+                <el-input v-model="addForm.nickname" autocomplete="off"></el-input>
+            </el-form-item>
+
+
+            <el-form-item label="用户邮箱" :label-width="formLabelWidth">
+                <el-input v-model="addForm.email" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="手机号码" :label-width="formLabelWidth">
+                <el-input v-model="addForm.mobile" autocomplete="off"></el-input>
+            </el-form-item>
+
+
+            <el-form-item label="性别" :label-width="formLabelWidth">
+                <el-radio v-model="addForm.sex" :label="0">男</el-radio>
+                <el-radio v-model="addForm.sex" :label="1">女</el-radio>
+            </el-form-item>
+
+
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="add()">确定</el-button>
+            <el-button type="primary" @click="addDialog = false">取消</el-button>
+        </div>
+
+
+    </el-dialog>
+
+
+
+    <!-- 表单数据-->
+    <template>
+        <el-table
+                v-loading="loading"
+                ref="filterTable"
+                :data="tableData"
+                style="width: 100%"
+        >
+            <!--序号   sortable:排序-->
+            <el-table-column
+                    label="序号"
+                    type="index"
+                    width="50">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="username"
+                    label="用户账号">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="password"
+                    label="密码">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="nickname"
+                    label="用户昵称">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="remark"
+                    label="备注"
+                    :formatter="formatter">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="deptId"
+                    label="部门ID">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="email"
+                    label="用户邮箱">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="mobile"
+                    label="手机号码">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="sex"
+                    label="性别">
+                <template slot-scope="scope">
+                        <span v-if="scope.row.sex === 0">男</span>
+                        <span v-if="scope.row.sex === 1">女</span>
+                </template>
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="avatar"
+                    label="头像">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="status"
+                    label="帐号状态">
+                <!--颜色-->
+                <template slot-scope="scope">
+                    <el-tag
+                            :type="scope.row.status == '0' ? 'danger' : 'success'"
+                            disable-transitions>
+                        <span v-if="scope.row.status == '1'">正常</span>
+                        <span v-if="scope.row.status == '0'">停用</span>
+                    </el-tag>
+                </template>
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="loginIp"
+                    label="最后登录IP">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="loginDate"
+                    label="最后登录时间">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="creator"
+                    label="创建者">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="createTime"
+                    label="创建时间">
+            </el-table-column>
+
+            <el-table-column
+                    align="center"
+                    prop="updater"
+                    label="更新者">
+            </el-table-column>
+
+
+            <el-table-column
+                    align="center"
+                    prop="updateTime"
+                    label="更新时间">
+            </el-table-column>
+
+
+            </el-table-column>
+            <!--    操作-->
+            <el-table-column label="操作" align="center">
+                <template slot-scope="scope">
+                    <el-button
+                            type="primary"
+                            size="mini"
+                            @click="handleEdit(scope.row)"
+                            icon="el-icon-edit"
+                    >编辑
+                    </el-button>
+                    <el-button
+                            icon="el-icon-delete-solid"
+                            type="danger"
+                            size="mini"
+                            @click="deleteById(scope.$index,scope.row.id)">删除
+                    </el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+
+
+</div>
+
+
+<script>
+    new Vue({
+        el: "#app",
+        methods: {
+            //全查
+            findAll() {
+                //发送异步请求, 请求所有信息
+                axios({
+                    method: "get",
+                    url: "user"
+                }).then(resp => {
+                    this.tableData = resp.data
+                })
+            },
+
+            //删除单条信息
+            deleteById(index, id) {
+                axios({
+                    method: "delete",
+                    url: "user/" + id
+                }).then(resp => {
+                    if(resp.data>0){
+                        this.$message.success('删除成功!');
+                        this.findAll();
+                    }else{
+                        this.$message.error('删除失败!');
+                        this.findAll();
+                    }
+                })
+            },
+
+
+            //添加信息
+            add(){
+                axios({
+                    method: "put",
+                    url: "user",
+                    data:this.addForm
+                }).then(resp => {
+                    if(resp.data>0){
+                        this.$message.success('添加成功!');
+                        this.addDialog=false;
+                        this.findAll();
+                    }else{
+                        this.$message.error('添加失败!');
+                        this.findAll();
+                    }
+                })
+            },
+
+            //修改信息
+            update(){
+                axios({
+                    method: "patch",
+                    url: "user",
+                    data:this.updateFrom
+                }).then(resp => {
+                    if(resp.data>0){
+                        this.$message.success('修改成功!');
+                        this.updateDialog=false;
+                        this.findAll();
+                    }else{
+                        this.$message.error('修改失败!');
+                        this.findAll();
+                    }
+                })
+            },
+
+            //点击编辑打开页面编辑
+            handleEdit(row) {
+                this.updateFrom = row;
+                this.updateDialog = true;
+            },
+
+        },
+
+        data() {
+            return {
+                updateDialog:false,
+                addDialog:false,
+                formLabelWidth: '120px',
+                //添加表单数据
+                addForm:{
+                    username: '',
+                    password: '',
+                    nickname: '',
+                    email: '',
+                    mobile: '',
+                    sex: '0',
+                },
+
+                //修改表单数据
+                updateFrom:{
+                    username: '',
+                    password: '',
+                    nickname: '',
+                    email: '',
+                    mobile: '',
+                    sex: '',
+                },
+                //表单数据
+                tableData: {
+                    username: '',
+                    password: '',
+                    nickname: '',
+                    remark: '',
+                    deptId: '',
+                    email: '',
+                    mobile: '',
+                    sex: '',
+                    avatar: '',
+                    status: '',
+                    loginIp: '',
+                    loginDat: '',
+                    creator: '',
+                    createTi: '',
+                    updater: '',
+                    updateTi: '',
+                },
+
+
+            }
+        },
+
+        mounted() {
+            this.findAll();
+        }
+    });
+</script>
+</body>
+</html>

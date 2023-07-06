@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/maven_spring1/maven_spring1.iml" filepath="$PROJECT_DIR$/maven_spring1/maven_spring1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_spring1work/maven_spring1work.iml" filepath="$PROJECT_DIR$/maven_spring1work/maven_spring1work.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_spring_aop/maven_spring_aop.iml" filepath="$PROJECT_DIR$/maven_spring_aop/maven_spring_aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvc1/spring_mvc1.iml" filepath="$PROJECT_DIR$/spring_mvc1/spring_mvc1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvcSsm/spring_mvcSsm.iml" filepath="$PROJECT_DIR$/spring_mvcSsm/spring_mvcSsm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_MP/springboot_MP.iml" filepath="$PROJECT_DIR$/springboot_MP/springboot_MP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" filepath="$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" />
+    </modules>
+  </component>
+</project>
